@@ -2,7 +2,7 @@ import whisper
 import sounddevice as sd
 from scipy.io.wavfile import write 
 from random import randrange
-
+from generateNumbers import generateNumbers
 
 
 
@@ -19,6 +19,8 @@ userAudioFile = "userAudio.wav"
 model = whisper.load_model('base.en')
 
 #Record and Save Audio
+randomNumbers = generateNumbers()
+print(randomNumbers)
 print("Recording...")
 userAudio = sd.rec(int(audioDuration * sd.default.samplerate))
 sd.wait()
@@ -29,7 +31,7 @@ write(userAudioFile, 44100, userAudio)
 result = model.transcribe(userAudioFile)
 
 #Compare result
-if(result["text"].strip() == "2056 12 18"):
+if(result["text"].strip() == randomNumbers):
     print("You speaked correctly!")
 else:
     print("You pronounced incorrectly, your answer: " + result["text"])
