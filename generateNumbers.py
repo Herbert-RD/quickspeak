@@ -12,4 +12,4 @@ def generateNumbers():
     stringRandomNumbers = " ".join(randomNumbers)
     return stringRandomNumbers
 
-print(generateNumbers())
+print("HELLO!")

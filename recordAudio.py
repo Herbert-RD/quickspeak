@@ -2,11 +2,10 @@ import sounddevice as sd
 from scipy.io import wavfile
 
 
-def recordAudio():  
+def recordAudio(audioDuration = 8):  
   #SOUNDDEVICE config
   sd.default.samplerate = 44100
   sd.default.channels = 2
-  audioDuration = 8
   userAudioFile = "userAudio.wav"
 
   userAudio = sd.rec(int(audioDuration * sd.default.samplerate))
