@@ -19,8 +19,7 @@ def compareNumbers(transcribedAudio, correctAnswer):
         print(transcribedAudioList)
         print(correctAnswer)
     else:
-        print("You pronounced incorrectly, your answer: " + transcribedAudio)
-        print(transcribedAudioList)
-        print(correctAnswer)
+        print(f'Transcribed: {transcribedAudioList}')
+        print(f'Correct: {correctAnswer}')
 
 

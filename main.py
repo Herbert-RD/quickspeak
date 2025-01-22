@@ -6,15 +6,24 @@ from compareNumbers import compareNumbers
 model = whisper.load_model('base.en')
 
 #Record and Save Audio
-randomNumbers = generateNumbers()
-print(randomNumbers)
-print("Recording...")
+def recordProcess():
+  randomNumbers = generateNumbers()
+  print(randomNumbers)
+  print("Recording...")
+  #Use Whipser to transcribe Audio
+  userAudioFile = recordAudio(10)
+  transcribedAudio = model.transcribe(userAudioFile)
+  compareNumbers(transcribedAudio['text'], randomNumbers)
+  
+  continueQuestion = input("Quer tentat novamente? (S/N)")
+  
+  if(continueQuestion.upper() == 'S'):
+    recordProcess()
 
-#Use Whipser to transcribe Audio
-userAudioFile = recordAudio(10)
-transcribedAudio = model.transcribe(userAudioFile)
+recordProcess()
 
-compareNumbers(transcribedAudio['text'], randomNumbers)
+
+
 
 
 
