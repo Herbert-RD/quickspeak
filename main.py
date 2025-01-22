@@ -10,8 +10,8 @@ def recordProcess():
   randomNumbers = generateNumbers()
   print(randomNumbers)
   print("Recording...")
-  #Use Whipser to transcribe Audio
   userAudioFile = recordAudio(10)
+  #Use Whipser to transcribe Audio
   transcribedAudio = model.transcribe(userAudioFile)
   compareNumbers(transcribedAudio['text'], randomNumbers)
   
