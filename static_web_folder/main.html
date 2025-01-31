@@ -8,8 +8,16 @@
 <body>
     <script type="text/javascript" src="/eel.js"></script>
     <script>
-        eel.helloFunc()
+
+        eel.expose(recordingSign);
+        function recordingSign(numberParam){
+            const titulo = document.createElement("h1");
+            titulo.textContent = numberParam;
+            document.body.appendChild(titulo);
+        }
+
     </script>    
     HELLO WORLD!
+    <button onclick="eel.recordProcess()">Say Hello!</button>
 </body>
 </html>
