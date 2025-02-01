@@ -25,4 +25,8 @@ def recordProcess():
   if(continueQuestion.upper() == 'S'):
     recordProcess()
 
+@eel.expose
+def modelLoaded():
+  return "MODELO CARREGADO"
+
 eel.start('main.html')
