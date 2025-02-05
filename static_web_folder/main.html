@@ -9,13 +9,26 @@
     <script type="text/javascript" src="/eel.js"></script>
     <script>
         
-        eel.modelLoaded()((x) => console.log(x))
+        // eel.modelLoaded()((x) => console.log(x))
+
+        eel.loadWhisperModel()
+
+        eel.expose(removeLoadingModal);
+        function removeLoadingModal(){
+            const modal = document.getElementById('loadingModal')
+            modal.classList.remove('modal')
+            modal.classList.add('invisibleModal')
+        }
+
+        eel.expose(modelLoaded);
+        function modelLoaded(){
+            console.log('MODELO CARREGADO')
+        }
         
         eel.expose(recordingSign);
         function recordingSign(numberParam){
-            const titulo = document.createElement("h1");
-            titulo.textContent = numberParam;
-            document.body.appendChild(titulo);
+            const displayBox = document.getElementById('display-box')
+            displayBox.innerHTML = numberParam
         }
 
     </script>    
@@ -27,11 +40,17 @@
      <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
      
     <link rel="stylesheet" href="style.css">
-    <div class="display-box">THE NUMBERS WILL APPEAR HERE</div>
+
+    <div id="loadingModal" class="modal">
+        <div class="modal-content">
+            Loading AI Model...
+        </div>
+    </div>
+    <div class="display-box" id="display-box">THE NUMBERS WILL APPEAR HERE</div>
     <div class="buttons-wrapper">
         <button class="icon">🐱</button>
-        <button class="play-button"><img src="assets/play-icon.svg" alt=""></button>
-        <button class="icon">⚙️</button>
+        <button onclick="eel.recordProcess()" class="play-button"><img src="assets/play-icon.svg" alt=""></button>
+        <button onclick="" class="icon">⚙️</button>
     </div>
 </body>
 </html>

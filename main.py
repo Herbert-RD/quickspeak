@@ -7,11 +7,18 @@ from compareNumbers import compareNumbers
 #EEL config
 eel.init('static_web_folder')
 
+@eel.expose
+def loadWhisperModel():
+  global model
+  model = whisper.load_model('base.en')
+  modelLoaded()
+  return model
+
+
 
 @eel.expose
 def recordProcess():
-  model = whisper.load_model('base.en')
-  
+
   randomNumbers = generateNumbers()
   print(randomNumbers)
   eel.recordingSign(randomNumbers)
@@ -20,13 +27,16 @@ def recordProcess():
   transcribedAudio = model.transcribe(userAudioFile)
   compareNumbers(transcribedAudio['text'], randomNumbers)
   
-  continueQuestion = input("Quer tentat novamente? (S/N)")
+  continueQuestion = input("Quer tentar novamente? (S/N)")
   
   if(continueQuestion.upper() == 'S'):
     recordProcess()
 
+
 @eel.expose
 def modelLoaded():
-  return "MODELO CARREGADO"
+  eel.modelLoaded()
+  eel.removeLoadingModal()
+  print('MODELO CARREGADO!')
 
 eel.start('main.html')
