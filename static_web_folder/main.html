@@ -28,7 +28,38 @@
         eel.expose(recordingSign);
         function recordingSign(numberParam){
             const displayBox = document.getElementById('display-box')
+            const playButton = document.getElementById('play-button')
+            playButton.classList.toggle('recording-state')
             displayBox.innerHTML = numberParam
+        }
+
+        function startButton(){
+            const displayBox = document.getElementById('display-box')
+            displayBox.classList.remove('correct-result')
+            displayBox.classList.remove('incorrect-result')
+            eel.recordProcess()
+        }
+        
+        eel.expose(comparingNumbers);
+        function comparingNumbers(){
+            const displayBox = document.getElementById('display-box')
+            displayBox.innerHTML = 'COMPARING...'
+        }
+
+        eel.expose(comparissonResult)
+        function comparissonResult(transcription, result){
+            
+            const playButton = document.getElementById('play-button')
+            playButton.classList.toggle('recording-state')
+            
+            const displayBox = document.getElementById('display-box')
+            if(result){
+                displayBox.classList.toggle('correct-result')
+            }
+            if(result == false){
+                displayBox.classList.toggle('incorrect-result')
+            }
+            displayBox.innerHTML = transcription                
         }
 
     </script>    
@@ -48,9 +79,9 @@
     </div>
     <div class="display-box" id="display-box">THE NUMBERS WILL APPEAR HERE</div>
     <div class="buttons-wrapper">
-        <button class="icon">🐱</button>
-        <button onclick="eel.recordProcess()" class="play-button"><img src="assets/play-icon.svg" alt=""></button>
-        <button onclick="" class="icon">⚙️</button>
+        <a href="https://github.com/Herbert-RD/quickspeak"><button class="icon" ><img src="assets/github-icon.svg" alt=""></button></a>
+        <button onclick="startButton()" class="play-button" id="play-button"><img src="assets/play-icon.svg" alt=""></button>
+        <button onclick="" class="icon"><img src="assets/config-icon.svg" alt=""></button>
     </div>
 </body>
 </html>

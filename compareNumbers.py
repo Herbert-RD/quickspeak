@@ -1,3 +1,5 @@
+import eel
+
 def compareNumbers(transcribedAudio, correctAnswer):    
     
     transcribedAudio = transcribedAudio.strip()
@@ -18,8 +20,12 @@ def compareNumbers(transcribedAudio, correctAnswer):
         print("You spoke correctly!")
         print(transcribedAudioList)
         print(correctAnswer)
+
+        eel.comparissonResult(transcribedAudio, True)
     else:
         print(f'Transcribed: {transcribedAudioList}')
         print(f'Correct: {correctAnswer}')
+        eel.comparissonResult(transcribedAudio, False)
+
 
 

@@ -96,8 +96,30 @@ body {
     font-size: 18px;
     font-weight: bold;
     font-family: 'Inter', serif;
+
+
 }
 
 .invisibleModal {
     display: none;
+}
+
+.correct-result {
+    background-color: #00c853;
+    border: solid  12px #1B422A ;
+
+    color: white;
+}
+
+.incorrect-result {
+    background-color: #C41C1C;
+    border: solid  12px #4D1B1C ;
+
+    
+    color: white;
+}
+
+.recording-state {
+    background-color: grey;
+    border: rgb(54, 54, 54);
 }

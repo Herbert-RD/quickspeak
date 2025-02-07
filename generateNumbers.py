@@ -8,5 +8,4 @@ def generateNumbers():
         randomNumbers[x] = str(randomNumbers[x])
         x += 1
 
-    #stringRandomNumbers = " ".join(randomNumbers)
     return randomNumbers

@@ -1,5 +1,6 @@
 import sounddevice as sd
 from scipy.io import wavfile
+import eel
 
 
 def recordAudio(audioDuration = 8):  
@@ -12,5 +13,5 @@ def recordAudio(audioDuration = 8):
   sd.wait()
 
   wavfile.write(userAudioFile, 44100, userAudio)
-
+  eel.comparingNumbers()
   return userAudioFile

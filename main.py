@@ -18,19 +18,16 @@ def loadWhisperModel():
 
 @eel.expose
 def recordProcess():
-
   randomNumbers = generateNumbers()
+  stringRandomNumbers = ", ".join(randomNumbers)
   print(randomNumbers)
-  eel.recordingSign(randomNumbers)
+  eel.recordingSign(stringRandomNumbers)
   userAudioFile = recordAudio(10)
   #Use Whipser to transcribe Audio
   transcribedAudio = model.transcribe(userAudioFile)
   compareNumbers(transcribedAudio['text'], randomNumbers)
   
-  continueQuestion = input("Quer tentar novamente? (S/N)")
-  
-  if(continueQuestion.upper() == 'S'):
-    recordProcess()
+
 
 
 @eel.expose
